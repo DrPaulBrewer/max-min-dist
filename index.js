@@ -192,24 +192,6 @@ class MaxMinDist {
       .map((c)=>(c.slice()))
       .map((c)=>(c.sort((a,b)=>(+a-b))))
       .map((c)=>((c.length===size? c : randomlyShrink(c,size))));
-
-/*
-    if (!Array.isArray(allCliques) || (allCliques.length===0))
-      return null;
-    const cliques = [];
-    allCliques.forEach((c)=>{
-      if (c.length===size) return cliques.push(c);
-      if (c.length<(size+2)) return cliques.push(...subsets(c,size));
-      // prevent exponential growth at loss of optimal result
-      // pick random elements of the clique to discard until at size+2
-      const newc = c.slice();
-      while(newc.length>(size+2)){
-        newc.splice(Prob.uniform(0,newc.length)(),1);
-      }
-      return cliques.push(...subsets(newc,size));
-    });
-
-*/
     if (!cliques || cliques.length===0) return null;
     let bestClique=0;
     let value = this.subsetMetric(cliques[0]);
