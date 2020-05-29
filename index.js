@@ -177,14 +177,14 @@ class MaxMinDist {
     if (size===2){
       // greedy is optimal for size=2
       const best2 = this.greedyGuess(2);
-      if (+lowerBound>best2.value) return null;
+      if (+lowerBound>=(best2.value)) return null;
       return best2;
     }
     if ((size<2) || (size > this.item.length))
       throw new RangeError("MaxMinDist: requested subset size out of range");
     const greedyLowerBound = this.greedyGuess(size).value;
-    const pairLowerBound = Math.max(+lowerBound,+greedyLowerBound);
-    const pairs = this.distantPairs(pairLowerBound);
+    if (greedyLowerBound>lowerBound) return this.greedyGuess(size);
+    const pairs = this.distantPairs(lowerBound);
     if ((pairs.length)<(size/2)) return null;
     const cliques =
       bronKerboshAlgorithm(pairs)

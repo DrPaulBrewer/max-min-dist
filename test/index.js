@@ -30,6 +30,11 @@ describe('MaxMinDist', function(){
     example.greedyStep().should.equal(false);
     example.greedyApproximation.should.deepEqual([0,1]);
     example.bestGuess(2).should.deepEqual({result: [0,1], value: 2});
+    example.distantPairs(0).should.deepEqual([[0,1]]);
+    example.distantPairs(2).should.deepEqual([]);
+    example.distantPairs(3).should.deepEqual([]);
+    assert.strictEqual(example.betterGuess(2, 3), null);
+    assert.strictEqual(example.betterGuess(2, 2), null);
   });
   it('new MaxMinDist({create:true, dimensions:50, items:1000}) creates random example with 1000 items and 50 dimensions', function(){
     const example = example2;
