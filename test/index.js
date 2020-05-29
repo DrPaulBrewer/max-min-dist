@@ -20,19 +20,21 @@ describe('MaxMinDist', function(){
     assert.equal(typeof(example),'object');
     assert.equal(typeof(example.metric), 'function');
     example.metric([1,0,1],[1,1,0]).should.equal(2);
-    example.requireMaxDistance();
+    example.distantPairs(0).should.deepEqual([[0,1]]);
+    example.distantPairs(2).should.deepEqual([]);
+    example.distantPairs(3).should.deepEqual([]);
     example.dist[0][1].should.equal(2);
-    example.maxDist.should.deepEqual({a:0,b:1,value:2});
+    assert.strictEqual(example.maxDist,undefined); // undefined until calculated
     example.distancesToSubset([0]).should.deepEqual([0,2]);
     example.distancesToSubset([1]).should.deepEqual([2,0]);
     example.distancesToSubset([0,1]).should.deepEqual([0,0]);
     example.greedyStep().should.equal(true);
+    example.maxDist.should.deepEqual({a:0,b:1,value:2});
     example.greedyStep().should.equal(false);
     example.greedyApproximation.should.deepEqual([0,1]);
     example.bestGuess(2).should.deepEqual({result: [0,1], value: 2});
-    example.distantPairs(0).should.deepEqual([[0,1]]);
-    example.distantPairs(2).should.deepEqual([]);
-    example.distantPairs(3).should.deepEqual([]);
+    example.betterGuess(2).should.deepEqual({result:[0,1], value:2});
+    example.betterGuess(2,1).should.deepEqual({result:[0,1], value:2});
     assert.strictEqual(example.betterGuess(2, 3), null);
     assert.strictEqual(example.betterGuess(2, 2), null);
   });

@@ -153,12 +153,15 @@ class MaxMinDist {
     return true;
   }
 
-  distantPairs(lowerBound){
+  distantPairs(_lowerBound){
+    const lowerBound = +_lowerBound || 0;
+    this.requireDistanceMatrix();
     const pairs = [];
+    const lbound = +lowerBound;
     const l = this.item.length;
-    for(let i=0;i<l;++i){
+    for(let i=0;i<(l-1);++i){
       for(let j=i+1;j<l;++j){
-        if (this.dist[i][j]>lowerBound)
+        if (this.dist[i][j]>+lbound)
           pairs.push([i,j]);
       }
     }
@@ -173,7 +176,8 @@ class MaxMinDist {
     return { result, value };
   }
 
-  betterGuess(size, lowerBound) {
+  betterGuess(size, _lowerBound) {
+    const lowerBound = +_lowerBound || 0;
     if (size===2){
       // greedy is optimal for size=2
       const best2 = this.greedyGuess(2);
