@@ -201,8 +201,11 @@ class MaxMinDist {
   }
 
   greedyGuess(size){
-    while(!this.greedyApproximation || (this.greedyApproximation.length<size))
-      this.greedyStep();
+    if (size>this.item.length)
+      throw new RangeError('MaxMinDist: greedyGuess the requested size should be less than the number of items');
+    let ok = true;
+    while( ok && (!this.greedyApproximation || (this.greedyApproximation.length<size)))
+      ok = this.greedyStep();
     const result = this.greedyApproximation.slice(0,size);
     const value = this.subsetMetric(result);
     return { result, value };
