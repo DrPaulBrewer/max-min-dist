@@ -77,6 +77,37 @@ class MaxMinDist {
       this.distanceMatrix();
   }
 
+  group(subset){
+    if ((!Array.isArray(subset)) || (subset.length<2))
+      throw new Error("MaxMinDist:group subset must be an array of length >= 2, got:"+subset.length);
+    const groups = [];
+    subset.forEach((s,j)=>{groups[j]=[];}); // create empty group for each subset item
+    this.requireDistanceMatrix();
+    const g = subset.length;
+    const l = this.dist.length;
+    for(let i=0;i<l;++i){
+      const dists = this.dist[i];
+      if (!subset.includes(i)){
+        let closest = 0;
+        let closestDistance = dists[subset[0]];
+        for(let j=1;j<g;j++){
+          const d = dists[subset[j]];
+          if (d<closestDistance){
+            closest = j;
+            closestDistance = d;
+          }
+        }
+        groups[closest].push({item: i, d: closestDistance});
+      }
+    }
+    return groups.map((grp,j)=>{
+      grp.sort((a,b)=>(a.d-b.d));
+      const onlyItems = grp.map((x)=>(x.item));
+      onlyItems.unshift(subset[j]);
+      return onlyItems;
+    });
+  }
+
   subsetMetric(subset) {
     const s = subset.slice(); // clobber-protection
     this.requireDistanceMatrix();
@@ -125,6 +156,7 @@ class MaxMinDist {
   distancesToSubset(subset) {
     const distances = [];
     const l = this.item.length;
+    this.requireDistanceMatrix();
     for (let i = 0;i < l;++i) {
       distances[i] = Math.min(...subset.map((s) => (this.dist[i][s])));
     }

@@ -35,6 +35,7 @@ describe('MaxMinDist', function(){
     example.bestGuess(2).should.deepEqual({result: [0,1], value: 2});
     example.betterGuess(2).should.deepEqual({result:[0,1], value:2});
     example.betterGuess(2,1).should.deepEqual({result:[0,1], value:2});
+    example.group([0,1]).should.deepEqual([[0],[1]]);
     assert.strictEqual(example.betterGuess(2, 3), null);
     assert.strictEqual(example.betterGuess(2, 2), null);
   });
@@ -140,4 +141,27 @@ describe('MaxMinDist', function(){
     );
   });
 
+  it('example.group(example.greedyGuess(5).result) should not contain a misgrouped item', function(){
+    const example = example2;
+    const subset = example.greedyGuess(5).result;
+    const groups = example.group(subset);
+    groups.length.should.equal(5);
+    groups.map((g)=>(g[0])).should.deepEqual(subset);
+    [].concat(...groups).length.should.equal(example.item.length);
+    groups
+    .forEach((g,j)=>{
+      assert.ok(Array.isArray(g),'each group should be an Array');
+      g[0].should.equal(subset[j]);
+      const grpDist = example.dist[g[0]];
+      g.forEach((gitem)=>{
+        const assignedDistance = grpDist[gitem];
+        assert.ok(Array.isArray(example.dist[gitem]), `distances should be defined for ${gitem}`);
+        example
+        .dist[gitem]
+        .forEach((d,k)=>{
+          assert.ok(!((d<assignedDistance) && (subset.includes(k))), `item ${gitem} missassigned to ${g[0]} (${example.dist[gitem][g[0]]}; ${assignedDistance}) belongs with ${k} (${example.dist[gitem][k]}) `);
+        });
+      });
+    });
+  });
 });
