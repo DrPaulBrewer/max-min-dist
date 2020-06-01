@@ -1,7 +1,7 @@
 # max-min-dist
 
 [![Build Status](https://travis-ci.org/DrPaulBrewer/max-min-dist.svg?branch=master)](https://travis-ci.org/DrPaulBrewer/max-min-dist)
-[![Coverage Status](https://coveralls.io/repos/github/DrPaulBrewer/max-min-dist/badge.svg?branch=master)](https://coveralls.io/github/DrPaulBrewer/max-min-dist?branch=master) [![Greenkeeper badge](https://badges.greenkeeper.io/DrPaulBrewer/max-min-dist.svg)](https://greenkeeper.io/)
+[![Coverage Status](https://coveralls.io/repos/github/DrPaulBrewer/max-min-dist/badge.svg?branch=master)](https://coveralls.io/github/DrPaulBrewer/max-min-dist?branch=master) 
 
 Generate approximate solutions to the max-min-dist dispersion problem
 
