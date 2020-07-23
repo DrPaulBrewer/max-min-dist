@@ -119,13 +119,12 @@ S. S. Ravi, D. J. Rosenkrantz and G. K. Tayi
 Operations Research  42(2), Mar - Apr 1994, pp.299-310.
 </pre>
 
-This is not by itself a K-Means algorithm, but has been used to initialize K-Means with some convergence advantages.
-
-See:
 <pre>
 K-means clustering using Max-min distance measure
 N. K. Visalakshi and J. Suguna
-NAFIPS 2009 - 2009 Annual Meeting of the North American Fuzzy Information Processing Society, Cincinnati, OH, 2009, pp. 1-6 
+2009 Annual Meeting of the North American Fuzzy Information Processing Society
+Cincinnati, OH, 2009
+pp. 1-6 
 doi: 10.1109/NAFIPS.2009.5156398.
 </pre>
 
