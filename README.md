@@ -26,7 +26,7 @@ Depending on import style, choose one of these statements to import `class MaxMi
 
 or
 
-`import MaxMinDist from 'max-min-dist';
+`import MaxMinDist from 'max-min-dist';`
 
 ## Usage
 
@@ -61,9 +61,9 @@ A custom `metric` should have a function value with signature `function dist(x,y
 
 ### Class Methods for Approximate Solutions
 
+The greedy algorithm will provide an exact solution for size = 2. 
 
-
-Because MaxMinDist is a combinatorial problem, a method for exact brute force solution is not provided.
+Because MaxMinDist is a combinatorial problem, a general method for exact brute force solution would not scale well and is not provided.
 
 #### Greedy Algorithm
 
