@@ -1,6 +1,6 @@
 {
   "name": "max-min-dist",
-  "version": "0.5.2",
+  "version": "1.0.0",
   "description": "generate approximate solutions to the max-min-dist dispersion problem",
   "main": "index.js",
   "scripts": {
