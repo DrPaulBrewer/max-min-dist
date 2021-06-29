@@ -33,7 +33,7 @@
     "should": "^13.2.3"
   },
   "dependencies": {
-    "@seregpie/bron-kerbosch": "^1.0.0",
+    "@seregpie/bron-kerbosch": "^1.0.1",
     "prob.js": "^1.0.6"
   }
 }
